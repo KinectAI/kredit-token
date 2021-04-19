@@ -1,8 +1,6 @@
 /**
  * Module     : WhoAmI.mo
- * Copyright  : 2020 Enzo Haussecker
  * License    : Apache 2.0 with LLVM Exception
- * Maintainer : Enzo Haussecker <enzo@dfinity.org>
  * Stability  : Experimental
  */
 

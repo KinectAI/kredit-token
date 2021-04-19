@@ -1,8 +1,7 @@
 /**
  * Module     : Token.mo
- * Copyright  : 2020 Enzo Haussecker
+ * Copyright  : 2021 Kinect LLC
  * License    : Apache 2.0 with LLVM Exception
- * Maintainer : Enzo Haussecker <enzo@dfinity.org>
  * Stability  : Experimental
  */
 
@@ -14,7 +13,12 @@ import List "mo:base/List";
 import Option "mo:base/Option";
 import Prim "mo:prim";
 import Util "../src/Util";
-
+// todo
+// SECURITY ??
+// Structure
+// List of all wallets and current status
+// KinectDAO actor    
+// UNISWAP CAPABILITIES
 actor Token {
 
   /** 
@@ -38,7 +42,7 @@ actor Token {
   private let initializer : Principal = Prim.caller();
 
   // The total token supply.
-  private let N : Nat = 1000000000;
+  private let N : Nat = 2500000000;
 
   // The distribution of token balances.
   private stable var balances : AssocList.AssocList<OwnerBytes, Nat> =
@@ -49,7 +53,7 @@ actor Token {
     List.nil<(OwnerBytes, AssocList<OwnerBytes, Nat>)>();
 
   // Allows the given `spender` to spend `amount` tokens on behalf ot function caller
-  public shared {
+  public shared ( {
     caller = caller;
   } func approve(spender : Owner, amount : Nat) : async Bool {
     switch (Hex.decode(spender)) {
@@ -91,7 +95,7 @@ actor Token {
         throw Error.reject("Parse error on approve:spender => " # msg);
       };
     };
-  };
+  };)
 
   // Transfers `amount` tokens from `owner` to `to`. Function caller should have permission to do so.
   // See function 'approve'.
@@ -180,12 +184,12 @@ actor Token {
 
   // Returns the name of the token.
   public query func name() : async Text {
-    return "Internet Computer Token";
+    return "Kinect Kredit Token";
   };
 
   // Returns the symbol of the token.
   public query func symbol() : async Text {
-    return "ICT";
+    return "KREDx";
   };
 
   // Returns the total token supply.
